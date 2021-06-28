@@ -11,6 +11,9 @@ Stipple = "4acbeb90-81a0-11ea-1966-bdaff8155998"
 StipplePlotly = "ec984513-233d-481d-95b0-a3b58b97af2b"
 
 [compat]
+Genie = "1, 2"
+Stipple = "^0.12"
+StipplePlotly = "0.3"
 julia = "1"
 
 [extras]

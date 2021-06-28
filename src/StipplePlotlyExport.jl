@@ -27,14 +27,14 @@ function save(data::Union{StipplePlotly.Charts.PlotData,Vector{StipplePlotly.Cha
 
   # Integrally copied from PlotlyBase.jl -- big thank you to the contributors!
 
-  bytes = transcode(UInt8, Genie.Renderer.Json.JSONParser.json(payload))
+  bytes = transcode(UInt8, Stipple.JSONParser.json(payload))
   write(PlotlyBase.P.stdin, bytes)
   write(PlotlyBase.P.stdin, transcode(UInt8, "\n"))
   flush(PlotlyBase.P.stdin)
 
   # read stdout and parse to json
   res = readline(PlotlyBase.P.stdout)
-  js = Genie.Renderer.Json.JSONParser.parse(res)
+  js = Stipple.JSONParser.parse(res)
 
   # check error code
   code = get(js, "code", 0)
