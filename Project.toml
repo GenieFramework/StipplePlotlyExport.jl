@@ -12,6 +12,7 @@ StipplePlotly = "ec984513-233d-481d-95b0-a3b58b97af2b"
 
 [compat]
 Genie = "2, 3"
+PlotlyBase = "0.8"
 Stipple = "0.13, 0.14"
 StipplePlotly = "0.4"
 julia = "1"
