@@ -1,7 +1,7 @@
 name = "StipplePlotlyExport"
 uuid = "d3391a6e-3825-4561-b7f8-2cd130659cb1"
 authors = ["Adrian Salceanu <e@essenciary.com>"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
@@ -11,11 +11,11 @@ Stipple = "4acbeb90-81a0-11ea-1966-bdaff8155998"
 StipplePlotly = "ec984513-233d-481d-95b0-a3b58b97af2b"
 
 [compat]
-Genie = "2, 3"
+Genie = "4"
 PlotlyBase = "0.8"
-Stipple = "0.13, 0.14"
-StipplePlotly = "0.4, 0.5"
-julia = "1"
+Stipple = "0.16"
+StipplePlotly = "0.6"
+julia = "1.6"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
