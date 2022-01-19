@@ -13,9 +13,9 @@ StipplePlotly = "ec984513-233d-481d-95b0-a3b58b97af2b"
 [compat]
 Genie = "4"
 PlotlyBase = "0.8"
-Stipple = "0.16, 0.17, 0.18"
-StipplePlotly = "0.6, 0.7, 0.8"
-julia = "1.6"
+Stipple = "0.16, 0.17, 0.18, 0.20"
+StipplePlotly = "0.6, 0.7, 0.8, 0.9"
+julia = "1.6, 1.7"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

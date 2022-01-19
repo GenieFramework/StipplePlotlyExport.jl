@@ -1,6 +1,8 @@
 module StipplePlotlyExport
 
 import Genie, Stipple, StipplePlotly, PlotlyBase, Base64
+include("KaleidoExport.jl")
+using .KaleidoExport
 
 function save(data::Union{StipplePlotly.Charts.PlotData,Vector{StipplePlotly.Charts.PlotData}},
               layout::StipplePlotly.Charts.PlotLayout = StipplePlotly.Charts.PlotLayout();
@@ -9,7 +11,7 @@ function save(data::Union{StipplePlotly.Charts.PlotData,Vector{StipplePlotly.Cha
               scale::Real = 1,
               format::String = "png")
 
-  format in PlotlyBase.ALL_FORMATS || error("Unknown format $format. Expected one of $(PlotlyBase.ALL_FORMATS)")
+  format in KaleidoExport.ALL_FORMATS || error("Unknown format $format. Expected one of $(KaleidoExport.ALL_FORMATS)")
 
   payload = Dict(
     :data => Dict(
@@ -22,18 +24,18 @@ function save(data::Union{StipplePlotly.Charts.PlotData,Vector{StipplePlotly.Cha
     :format => format
   )
 
-  PlotlyBase._start_kaleido_process()
-  PlotlyBase._ensure_kaleido_running() || PlotlyBase._restart_kaleido_process()
+  KaleidoExport._start_kaleido_process()
+  KaleidoExport._ensure_kaleido_running() || KaleidoExport._restart_kaleido_process()
 
   # Integrally copied from PlotlyBase.jl -- big thank you to the contributors!
 
   bytes = transcode(UInt8, Stipple.JSONParser.json(payload))
-  write(PlotlyBase.P.stdin, bytes)
-  write(PlotlyBase.P.stdin, transcode(UInt8, "\n"))
-  flush(PlotlyBase.P.stdin)
+  write(KaleidoExport.P.stdin, bytes)
+  write(KaleidoExport.P.stdin, transcode(UInt8, "\n"))
+  flush(KaleidoExport.P.stdin)
 
   # read stdout and parse to json
-  res = readline(PlotlyBase.P.stdout)
+  res = readline(KaleidoExport.P.stdout)
   js = Stipple.JSONParser.parse(res)
 
   # check error code
@@ -47,7 +49,7 @@ function save(data::Union{StipplePlotly.Charts.PlotData,Vector{StipplePlotly.Cha
   img = String(js["result"])
 
   # base64 decode if needed, otherwise transcode to vector of byte
-  if format in PlotlyBase.TEXT_FORMATS
+  if format in KaleidoExport.TEXT_FORMATS
       return transcode(UInt8, img)
   else
       return Base64.base64decode(img)
