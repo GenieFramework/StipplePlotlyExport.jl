@@ -1,6 +1,7 @@
 module StipplePlotlyExport
 
-import Genie, Stipple, StipplePlotly, PlotlyBase, Base64
+import Stipple.Genie as Genie
+import Stipple, StipplePlotly, PlotlyBase, Base64
 include("KaleidoExport.jl")
 using .KaleidoExport
 
